@@ -46,8 +46,6 @@ def products(request, product_slug=False, product_id=False):
 
     return render(request, "products_app/products.html", context=context)
 
-# {% user_basket request as baskets %}
-# {% with baskets=user_basket request %}
 
 
 

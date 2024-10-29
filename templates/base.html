@@ -13,12 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'deps/css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}">
-    <!-- Стиль footer -->
+    <!-- Стиль footer-a для главной страницы -->
     {% block css %}
 
     {% endblock css %}
 
-    <!-- Favicons -->
+    <!-- Favicons for different platforms -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon-16x16.png' %}">
@@ -44,8 +44,8 @@
                                 Информация
                             </a>
                             <ul class="dropdown-menu">
-<!--                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>-->
-<!--                                <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>-->
+                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
+                                <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>
                                 <li><a class="dropdown-item  text-white" href="{% url 'main_app:about' %}">Про нас</a></li>
                             </ul>
                         </li>
@@ -61,7 +61,7 @@
                                 Мой профиль
                             </a>
                             <ul class="dropdown-menu">
-<!--                                <li><a class="dropdown-item  text-white" href="{% url 'users_app:users_basket' %}">Корзина</a></li>-->
+
                                 <li><a class="dropdown-item  text-white" href="{% url 'users_app:profile' %}">Личный кабинет</a>
                                 </li>
                                 {% if user.is_admin or user.is_staff %}
@@ -84,7 +84,7 @@
     </header>
     <section>
         <div class="container">
-            <!-- Каталог и корзина -->
+            <!-- Каталог и корзина с фиксированным расположением на странице -->
             <div class="row mt-5 position-fixed z-3">
                 <!-- Каталог -->
                 <div class="dropdown mb-2">
@@ -109,16 +109,9 @@
                             height="24">
                         <a class="nav-link  text-white" href="{% url 'users_app:users_basket' %}">&#160 Корзина </a>
 
-                        <span id="goods-in-cart-count">&#160 {{ baskets.total_quantity}}</span>
+                        <span id="product-in-basket-count">&#160 {{ baskets.total_quantity}}</span>
                     </button>
 
-
-
-<!--                        <img class="mx-1" src="{% static 'deps/icons/basket2-fill.svg' %}" alt="Catalog Icon" width="24"-->
-<!--                            height="24">-->
-<!--                        <a class="nav-link  text-white " >&#160 Для оформления<br> заказа перейдите<br> в личный кабинет. <br> Сейчас в <br> корзине </a>-->
-
-<!--                        <a class="nav-link  text-white" >&#160 {{ baskets.total_quantity}} единицы <br> товара </a>-->
                 </div>
                 <!-- Разметка модального окна корзины -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -134,13 +127,11 @@
                                 <div class="container" id="cart-items-container">
                                     <!-- Разметка корзины -->
                                     {% include "basket_app/includes/included_basket.html" %}
-<!--                                    <a class="button"  href="{% url 'orders:create_order' %}">-->
-<!--                                        Оформить заказ-->
+
                                     <!-- Закончилась разметка корзины -->
                                 </div>
 
 
-<!--                                    <a class="btn btn-dark" href="orders/create_order.html">-->
 <!--                                        Оформить заказ-->
                                     <a class="btn btn-dark" href="{% url 'orders:create_order' %}">
                                         Оформить заказ
@@ -172,8 +163,6 @@
     {% block footer %}
     {% endblock footer %}
 
-    <script src="{% static 'deps/js/jquery/jquery-3.7.0.min.js' %}"></script>
-    <script src="{% static 'deps/js/jquery-ajax.js' %}"></script>
     <script src="{% static 'deps/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
 </body>
 

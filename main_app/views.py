@@ -7,7 +7,7 @@ def index(request):
 
 
     context: dict = {
-        'title': 'Главная страница магазина Аптека (V)',
+        'title': 'Главная страница магазина Аптека (V)(Это учебный сайт)',
         'content': 'Магазин Аптека (V)',
 
     }
@@ -15,7 +15,7 @@ def index(request):
 
 def about(request):
     context: dict = {
-        'title': 'О нас',
+        'title': 'О нас  (Это учебный сайт)',
         'content_page': 'Адрес. Телефон.',
         'text': 'Наши преимущества',
     }

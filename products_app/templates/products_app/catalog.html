@@ -65,7 +65,7 @@
                 {% if product.image %}
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                 {% else %}
-                    <img src="{% static 'deps/images/Not found image.png' %}" class="card-img-top" alt="not found">
+                    <img src="{% static 'deps/images/Not found image.png' %}" class="card-img-top" alt="...">
                 {% endif %}
                 <div class="card-body">
                     <a href="{% url 'catalog:products' product.slug %}">
@@ -83,8 +83,7 @@
                         {% endif %}
 
 
-                        <a href="{% url 'basket:basket_add' %}" class="btn add-to-basket"
-                        data-product-id="{{ product.id }}">
+                        <a href="{% url 'basket:basket_add' product.slug %}"  class="btn add-to-basket">
                             {% csrf_token %}
                             <img class="mx-1" src="{% static 'deps/icons/basket.png' %}" alt="Catalog Icon"
                                 width="32" height="32">
