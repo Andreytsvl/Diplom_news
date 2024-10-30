@@ -53,6 +53,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
     readonly_fields = ("created_timestamp",)
+
     list_filter = (
         "requires_delivery",
         "status",

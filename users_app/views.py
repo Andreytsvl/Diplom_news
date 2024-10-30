@@ -76,7 +76,7 @@ def profile(request):
     else:
         form = ProfileForm(instance=request.user)
 
-    orders = Order.objects.filter(user=request.user).prefetch_related(
+    orders = Order.objects.filter(user=request.user).prefetch_related( # вывод заказов клиента в профиль
         Prefetch(
             "orderitem_set",
             queryset=OrderItem.objects.select_related("product"),

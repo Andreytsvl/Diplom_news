@@ -9,7 +9,7 @@ from basket_app.models import Basket
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
 
-@login_required
+@login_required # защита от неавторизованного пользователя
 def create_order(request):
     if request.method == 'POST':
         form = CreateOrderForm(data=request.POST)
@@ -55,19 +55,19 @@ def create_order(request):
                         messages.success(request, 'Заказ оформлен!')
                         return redirect('user:profile')
             except ValidationError as e:
-                messages.success(request, str(e))
+                messages.warning(request, str(e))
                 return redirect('basket:order')
     else:
         initial = {
             'first_name': request.user.first_name,
             'last_name': request.user.last_name,
+            'phone_number': request.user.phone_number,
         }
 
         form = CreateOrderForm(initial=initial)
 
     context = {
-        'title': 'Home - Оформление заказа',
+        'title': 'Оформление заказа',
         'form': form,
-        'order': True,
-    }
+     }
     return render(request, 'orders/create_order.html', context=context)

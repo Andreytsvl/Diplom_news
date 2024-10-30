@@ -1,4 +1,3 @@
-
 from django import forms
 
 
@@ -22,3 +21,11 @@ class CreateOrderForm(forms.Form):
         ],
     )
 
+    def clean_phone_number(self): #clean_ означает пользовательский валидатор
+        data = self.cleaned_data['phone_number']
+
+        if not data.isdigit():
+            raise forms.ValidationError("Номер телефона должен содержать только цифры")
+
+
+        return data
