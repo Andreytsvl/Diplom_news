@@ -4,7 +4,7 @@
 
 
 {% block content %}
-<div class="row">
+<div class="row" >
 
     <!-- Форма фильтров -->
     <div class="dropdown mb-2">
@@ -59,13 +59,13 @@
     {% for product in products_app %}
         <!-- Карта товара -->
 
-        <div class='card' style="width: 18rem;">
+        <div class='card' style="width: 18rem;" >
 
-            <div class="card border-primary rounded ">
+            <div class="card border-primary rounded " >
                 {% if product.image %}
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                 {% else %}
-                    <img src="{% static 'deps/images/Not found image.png' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'deps/images/Not found image.jpg' %}" class="card-img-top" alt="...">
                 {% endif %}
                 <div class="card-body">
                     <a href="{% url 'catalog:products' product.slug %}">
@@ -91,6 +91,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     {% endfor %}
 
