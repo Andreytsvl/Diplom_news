@@ -44,7 +44,6 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "user",
-        "requires_delivery",
         "status",
         "payment_on_get",
         "is_paid",
@@ -55,7 +54,6 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ("created_timestamp",)
 
     list_filter = (
-        "requires_delivery",
         "status",
         "payment_on_get",
         "is_paid",
